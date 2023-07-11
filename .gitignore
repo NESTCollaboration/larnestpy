@@ -1,0 +1,11 @@
+build/*
+dist/*
+.DS_store
+.idea/*
+larnestpy/.DS_Store
+larnestpy/larnestpy.egg-info/
+larnestpy/__pycache__/
+larnestpy/larnestpy.cpython-38-darwin.so
+tests/__pycache__/
+venv/
+*.png
