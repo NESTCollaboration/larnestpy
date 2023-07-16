@@ -2,6 +2,7 @@ build/*
 dist/*
 .DS_store
 .idea/*
+src/larnestpy.egg-info/
 larnestpy/.DS_Store
 larnestpy/larnestpy.egg-info/
 larnestpy/__pycache__/

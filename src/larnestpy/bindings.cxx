@@ -41,6 +41,12 @@ PYBIND11_MODULE(larnestpy, m)
 		.value("NR", larnest::LArInteraction::NR)
 		.value("ER", larnest::LArInteraction::ER)
 		.value("Alpha", larnest::LArInteraction::Alpha)
+		.value("dEdx", larnest::LArInteraction::dEdx)
+		.value("LeptonLET", larnest::LArInteraction::LeptonLET)
+		.value("LET", larnest::LArInteraction::LET)
+		.value("BOX", larnest::LArInteraction::BOX)
+		.value("BIRKS", larnest::LArInteraction::BIRKS)
+		.value("Legacy", larnest::LArInteraction::Legacy)
 		.export_values();
 
 	// NR Yields Parameters
@@ -152,6 +158,18 @@ PYBIND11_MODULE(larnestpy, m)
 		.def_readwrite("A", &larnest::ThomasImelParameters::A)
 		.def_readwrite("B", &larnest::ThomasImelParameters::B);
 	
+	// BOX Parameters
+	py::class_<larnest::BOXParameters>(m, "BOXParameters", py::dynamic_attr())
+		.def(py::init<>())
+		.def_readwrite("A", &larnest::BOXParameters::alpha)
+		.def_readwrite("B", &larnest::BOXParameters::beta);
+	
+	// BIRKS Parameters
+	py::class_<larnest::BIRKSParameters>(m, "BIRKSParameters", py::dynamic_attr())
+		.def(py::init<>())
+		.def_readwrite("alpha", &larnest::BIRKSParameters::Ab)
+		.def_readwrite("beta", &larnest::BIRKSParameters::kb);
+	
 	// Drift Parameters
 	py::class_<larnest::DriftParameters>(m, "DriftParameters", py::dynamic_attr())
 		.def(py::init<>())
@@ -160,6 +178,7 @@ PYBIND11_MODULE(larnestpy, m)
 		.def_readwrite("C", &larnest::DriftParameters::B)
 		.def_readwrite("TempLow", &larnest::DriftParameters::TempLow)
 		.def_readwrite("TempHigh", &larnest::DriftParameters::TempHigh);
+	
 
 	// LAr Mean Yield Result
 	py::class_<larnest::LArYieldResult>(m, "LArYieldResult", py::dynamic_attr())
@@ -172,7 +191,8 @@ PYBIND11_MODULE(larnestpy, m)
 		.def_readwrite("Nex", &larnest::LArYieldResult::Nex)
 		.def_readwrite("Nion", &larnest::LArYieldResult::Nion)
 		.def_readwrite("Lindhard", &larnest::LArYieldResult::Lindhard)
-		.def_readwrite("ElectricField", &larnest::LArYieldResult::ElectricField);
+		.def_readwrite("ElectricField", &larnest::LArYieldResult::ElectricField)
+		.def_readwrite("RecombinationProbability", &larnest::LArYieldResult::RecombinationProbability);
 
 	// LAr Fluctuation Result
 	py::class_<larnest::LArYieldFluctuationResult>(m, "LArYieldFluctuationResult", py::dynamic_attr())
